@@ -47,7 +47,7 @@ test:
 .PHONY: perf-test
 perf-test:
 	@echo "Running performance test cases..."
-	go test -bench=.
+	go test -bench=. ./...
 
 # Build Docker image
 .PHONY: docker
