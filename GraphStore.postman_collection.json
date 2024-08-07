@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "fe316800-46b6-4076-a51f-0acab0436ffe",
+		"name": "GraphStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27717829"
+	},
+	"item": [
+		{
+			"name": "CreateGraph",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vertices\": {\n        \"A\": [\n            \"B\",\n            \"C\"\n        ],\n        \"B\": [\n            \"A\",\n            \"D\"\n        ],\n        \"C\": [\n            \"A\",\n            \"D\"\n        ],\n        \"D\": [\n            \"B\",\n            \"C\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2007/graph",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2007",
+					"path": [
+						"graph"
+					]
+				},
+				"description": "Creates a graph with the given vertices and nodes and returns an id for the same."
+			},
+			"response": [
+				{
+					"name": "CreateGraph-200OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vertices\": {\n        \"A\": [\n            \"B\",\n            \"C\"\n        ],\n        \"B\": [\n            \"A\",\n            \"D\"\n        ],\n        \"C\": [\n            \"A\",\n            \"D\"\n        ],\n        \"D\": [\n            \"B\",\n            \"C\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/graph",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"graph"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 20:55:22 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n\"id\": \"01912979-9f05-76f5-94ff-8291030ad081\"\n}"
+				},
+				{
+					"name": "CreateGraph-badrequest",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vertices\": {\n        \"A\": \n            \"B\",\n            \"C\"\n        ],\n        \"B\": [\n            \"A\",\n            \"D\"\n        ],\n        \"C\": [\n            \"A\",\n            \"D\"\n        ],\n        \"D\": [\n            \"B\",\n            \"C\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/graph",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"graph"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 20:59:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"error\":{\"Offset\":76}}\n"
+				}
+			]
+		},
+		{
+			"name": "FetchShortestPath",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "FindShortestPath-200OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/graph/0191298f-ee8b-7ba8-82d2-1d13edeadb44/shortestpath/A/D",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"graph",
+								"0191298f-ee8b-7ba8-82d2-1d13edeadb44",
+								"shortestpath",
+								"A",
+								"D"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 21:20:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"path\":[\"A\",\"B\",\"D\"]}\n"
+				}
+			]
+		},
+		{
+			"name": "DeleteGraph",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostname",
+			"value": "http://localhost:2007",
+			"type": "string"
+		}
+	]
+}
